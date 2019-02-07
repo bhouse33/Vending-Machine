@@ -16,7 +16,7 @@ namespace Capstone.Classes
         private Dictionary<string, VendingMachineItem> VendingMachineItems;
 
         /// <summary>
-        /// Initializes the vending machine inventory.
+        /// Initializes the vending machine inventory. 
         /// </summary>
         /// <param name="fileName"></param>
         public StockVendingMachine()
