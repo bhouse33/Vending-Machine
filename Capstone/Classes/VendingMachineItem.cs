@@ -4,8 +4,9 @@ using System.Text;
 
 namespace Capstone.Classes
 {
-    public class VendingMachine
+    public class VendingMachineItem
     {
+
 
 
 
