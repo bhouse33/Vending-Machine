@@ -71,7 +71,7 @@ namespace Capstone.Classes
                 else if (choice == "2")
                 {
                     Console.Clear();
-                    PurchaseMenu(vendoMatic500.Balance, vendoMatic500);
+                    PurchaseMenu(vendoMatic500);
                 }
 
                 else
@@ -88,44 +88,44 @@ namespace Capstone.Classes
         /// Moves to the purchase menu.
         /// </summary>
         /// <param name="balance"></param>
-        public void PurchaseMenu(decimal balance, VendingMachine vendoMatic500)
+        public void PurchaseMenu(VendingMachine vendoMatic500)
         {
             Console.WriteLine("(1) Feed Money");
             Console.WriteLine("(2) Select Product");
             Console.WriteLine("(3) Finish Transaction");
-            Console.WriteLine($"Current Money Provided: {balance:c2} ");
+            Console.WriteLine($"Current Money Provided: {vendoMatic500.Balance:c2} ");
             string choice = GetString(">Please enter your choice.");
 
             if (choice =="1")
             {
-               balance=FeedMoney(balance);
+               vendoMatic500.Balance=FeedMoney(vendoMatic500.Balance);
                Console.Clear();
-               PurchaseMenu(balance, vendoMatic500);
+               PurchaseMenu(vendoMatic500);
             }
             else if (choice == "2")
             {
                 //Display Items for user to see what's there and make a choice
                 vendoMatic500.Display();
                 //Prompt user for item and hold choice in variable
-                string productChoice=GetString(">Please enter the slot of your choice.");
-                Console.Clear();
+                string productChoice=GetString(">Please enter the slot of your choice.");                
 
                 //Check if product code does not exist
                 if(!vendoMatic500.VendingMachineItems.ContainsKey(productChoice))
                 {
                     Console.WriteLine("That code does not exist. TRY AGAIN.");
-                    PurchaseMenu(balance, vendoMatic500);
+                    PurchaseMenu(vendoMatic500);
                 }
 
                 //Dispense item - if quantity is available and they have enough money and if code exists
                 vendoMatic500.Dispense(productChoice);
 
                 //Update the audit report
-                LogMessage($"{vendoMatic500.VendingMachineItems[productChoice].ProductName} {productChoice}", 
+                LogMessage($"{vendoMatic500.VendingMachineItems[productChoice].ProductName} {productChoice} ", 
                     vendoMatic500.Balance + vendoMatic500.VendingMachineItems[productChoice].Price, vendoMatic500.Balance);
 
                 //Return to purchase menu
-                PurchaseMenu(vendoMatic500.Balance, vendoMatic500);
+                Console.Clear();
+                PurchaseMenu(vendoMatic500);
             }
         }
 
@@ -139,8 +139,8 @@ namespace Capstone.Classes
         {
             try
             {
-                using (StreamWriter sw = new StreamWriter("Log.txt"))
-                    sw.WriteLine($"{DateTime.Now.ToString()}{message, -20} {adjustment, -10} {balance}");
+                using (StreamWriter sw = new StreamWriter("Log.txt", true))
+                    sw.WriteLine($"{DateTime.Now.ToString()} {message,-20} ${adjustment,-10} {balance:c2}");
             }
             catch(Exception ex)
             {

@@ -57,7 +57,7 @@ namespace Capstone.Classes
             {
                 Console.WriteLine("Chew Chew, Yum!");
             }
-
+            Console.ReadLine();
             //Update Quantity
             VendingMachineItems[productChoice].Quantity--;
 

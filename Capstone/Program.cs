@@ -17,3 +17,12 @@ namespace Capstone
         }
     }
 }
+
+///TO Do List
+///
+
+    //Print Sales Report
+    //Write tests for methods
+    //formatting for display()
+    //test that quantity is reduced when purchased
+    //exceptions arent preventing purchases
