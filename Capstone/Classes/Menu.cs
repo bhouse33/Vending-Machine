@@ -101,9 +101,6 @@ namespace Capstone.Classes
                 Console.Write(kvp.Value.ProductType);
                 Console.WriteLine();
             }
-
-            
-
         }
 
         public void PrintReport()
@@ -117,12 +114,14 @@ namespace Capstone.Classes
             Console.WriteLine("(1) Feed Money");
             Console.WriteLine("(2) Select Product");
             Console.WriteLine("(3) Finish Transaction");
-            Console.WriteLine($"Current Money Provided: {balance} ");
+            Console.WriteLine($"Current Money Provided: {balance:c2} ");
             string choice = GetString(">Please enter your choice.");
 
             if (choice =="1")
             {
-                FeedMoney(balance);
+               balance=FeedMoney(balance);
+               Console.Clear();
+               PurchaseMenu(balance);
             }
             else if (choice == "2")
             {
