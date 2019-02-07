@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Capstone.Classes;
+using System;
+using System.Collections.Generic;
 
 namespace Capstone
 {
@@ -7,7 +9,7 @@ namespace Capstone
         static void Main(string[] args)
         {
             //Object to stock the vending machine.
-            Stock vendingMachineStock = new Stock(string fileName);
+            StockVendingMachine vendingMachineStock = new StockVendingMachine();
 
             //Create vending machine
             VendingMachine vendoMatic500 = new VendingMachine(vendingMachineStock.dictOfItems);
