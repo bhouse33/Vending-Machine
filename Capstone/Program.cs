@@ -16,6 +16,8 @@ namespace Capstone
             //Create vending machine - take items off cart and load to machine
             VendingMachine vendoMatic500 = new VendingMachine();
 
+           // Console.WriteLine($"{vendoMatic500.Balance}");
+
         }
     }
 }

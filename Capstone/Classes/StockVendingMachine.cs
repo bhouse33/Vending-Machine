@@ -13,7 +13,7 @@ namespace Capstone.Classes
         /// <summary>
         /// Holds the vending items in a dictionary.
         /// </summary>
-        private Dictionary<string, VendingMachineItem> VendingMachineItems;
+        public Dictionary<string, VendingMachineItem> VendingMachineItems;
 
         /// <summary>
         /// Initializes the vending machine inventory. 
@@ -28,8 +28,14 @@ namespace Capstone.Classes
 
             //Create the items
             PopulateVendingMachineWithInitialItems(fileName);
-
+           
         }
+
+        public Dictionary<string, VendingMachineItem> SendVendingItems()
+        {
+            return this.VendingMachineItems;
+        }
+
 
         /// <summary>
         /// Populates vending machine with initial items.
