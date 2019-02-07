@@ -33,15 +33,10 @@ namespace Capstone.Classes
             return numberOutput;
         }
 
-        public Menu ()
-        {
-
-        }
-
         /// <summary>
         /// Print out the menu.
         /// </summary>
-        public void Run(decimal balance)
+        public void Run(VendingMachine vendoMatic500)
         {
 
             while(true)
@@ -68,7 +63,7 @@ namespace Capstone.Classes
                 else if (choice == "1")
                 {
                     Console.Clear();
-                    Display();
+                    Display(vendoMatic500);
                     
                 }
 
@@ -76,7 +71,7 @@ namespace Capstone.Classes
                 else if (choice == "2")
                 {
                     Console.Clear();
-                    PurchaseMenu(balance);
+                    PurchaseMenu(vendoMatic500.Balance);
                 }
 
                 else
@@ -85,31 +80,29 @@ namespace Capstone.Classes
                     Console.WriteLine("Invalid Option");
                     Console.ReadLine();
                 }
+            }
+        }
 
-                
+        public void Display(VendingMachine vendoMatic500)
+        {
+            Console.Write("Slot_Location", -14);
+            Console.Write(" Name\t\t", -25);
+            Console.Write(" \tPrice\t\t", -17);
+            Console.Write(" Amount_Left", -10);
+            Console.Write(" Type\n");
+            //Console.ReadLine();
+
+            foreach (KeyValuePair<string, VendingMachineItem> kvp in vendoMatic500.VendingMachineItems)
+            {
+                Console.Write($"{kvp.Value.SlotLocation, -14}");
+                Console.Write($"{kvp.Value.ProductName, -25}");
+                Console.Write($"${kvp.Value.Price,-17}");
+                Console.Write($"{kvp.Value.Quantity.ToString(), -10}");
+                Console.Write(kvp.Value.ProductType);
+                Console.WriteLine();
             }
 
             
-
-
-        }
-
-        public void Display()
-        {
-            Console.Write("Slot_Location", -15);
-            Console.Write(" Name", -7);
-            Console.Write(" Price", -7);
-            Console.Write(" Amount_Left", -3);
-            Console.Write(" Type");
-            //Console.ReadLine();
-
-            Console.Write("", -15);
-            Console.Write("", -7);
-            Console.Write("", -7);
-            Console.Write("", -3);
-            Console.Write("");
-
-
 
         }
 
@@ -133,7 +126,7 @@ namespace Capstone.Classes
             }
             else if (choice == "2")
             {
-                Display();
+                //Display();
             }
 
 

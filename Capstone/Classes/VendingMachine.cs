@@ -10,7 +10,7 @@ namespace Capstone.Classes
 
         private Dictionary<string, int> SalesReportDictionary = new Dictionary<string, int>();
 
-        private Dictionary<string, VendingMachineItem> VendingMachineItems = new Dictionary<string, VendingMachineItem>();
+        public Dictionary<string, VendingMachineItem> VendingMachineItems = new Dictionary<string, VendingMachineItem>();
 
         public VendingMachine()
         {

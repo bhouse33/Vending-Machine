@@ -12,7 +12,7 @@ namespace Capstone
             VendingMachine vendoMatic500 = new VendingMachine();
 
             Menu main = new Menu();
-            main.Run(vendoMatic500.Balance);
+            main.Run(vendoMatic500);
 
 
             // Console.WriteLine($"{vendoMatic500.Balance}");
