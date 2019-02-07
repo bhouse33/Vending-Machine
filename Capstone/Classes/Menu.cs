@@ -41,8 +41,9 @@ namespace Capstone.Classes
         /// <summary>
         /// Print out the menu.
         /// </summary>
-        public void Run()
+        public void Run(decimal balance)
         {
+
             while(true)
             {
                 Console.WriteLine("Welcome to Vendo-Matic 500");
@@ -75,7 +76,7 @@ namespace Capstone.Classes
                 else if (choice == "2")
                 {
                     Console.Clear();
-                    PurchaseMenu();
+                    PurchaseMenu(balance);
                 }
 
                 else
@@ -96,11 +97,20 @@ namespace Capstone.Classes
         public void Display()
         {
             Console.Write("Slot_Location", -15);
-            Console.Write("Name", -7);
-            Console.Write("Price", -7);
-            Console.Write("Amount Left", -3);
-            Console.Write("Type");
-            Console.ReadLine();
+            Console.Write(" Name", -7);
+            Console.Write(" Price", -7);
+            Console.Write(" Amount_Left", -3);
+            Console.Write(" Type");
+            //Console.ReadLine();
+
+            Console.Write("", -15);
+            Console.Write("", -7);
+            Console.Write("", -7);
+            Console.Write("", -3);
+            Console.Write("");
+
+
+
         }
 
         public void PrintReport()
@@ -109,12 +119,34 @@ namespace Capstone.Classes
 
         }
 
-        public void PurchaseMenu()
+        public void PurchaseMenu(decimal balance)
         {
+            Console.WriteLine("(1) Feed Money");
+            Console.WriteLine("(2) Select Product");
+            Console.WriteLine("(3) Finish Transaction");
+            Console.WriteLine($"Current Money Provided: {balance} ");
+            string choice = GetString(">Please enter your choice.");
+
+            if (choice =="1")
+            {
+                FeedMoney(balance);
+            }
+            else if (choice == "2")
+            {
+                Display();
+            }
+
+
 
 
         }
 
+        /// <summary>
+        /// Writes to Log.txt
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="adjustment"></param>
+        /// <param name="balance"></param>
         public void LogMessage(string message, decimal adjustment, decimal balance)
         {
             try
@@ -127,6 +159,20 @@ namespace Capstone.Classes
                 Console.WriteLine("Error cannot write to file");
                 Console.WriteLine(ex.Message);
             }
+        }
+
+        /// <summary>
+        /// Feeding money into current vending machine balance.
+        /// </summary>
+        /// <param name="balance">current balance</param>
+        /// <returns>new balance</returns>
+        public decimal FeedMoney(decimal balance)
+        {
+            Console.WriteLine("How much money do you want to feed into the vending machine?");
+            decimal moneyFed = GetDecimal("$1, $2, $5 or $10");
+            balance += moneyFed;
+            LogMessage("FEED MONEY", moneyFed, balance);
+            return balance;
         }
 
     }
