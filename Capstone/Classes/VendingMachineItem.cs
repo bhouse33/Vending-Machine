@@ -7,7 +7,7 @@ namespace Capstone.Classes
     public class VendingMachineItem
     {
         /// <summary>
-        /// Represents the slot code
+        /// Represents the slot code.
         /// </summary>
         public string SlotLocation;
 

@@ -6,7 +6,7 @@ using System.Text;
 namespace Capstone.Classes
 {
     /// <summary>
-    /// Represents stocking a vending machine.
+    /// Represents stocking a vending machine. 
     /// </summary>
     public class StockVendingMachine
     {
@@ -21,7 +21,8 @@ namespace Capstone.Classes
         /// <param name="fileName"></param>
         public StockVendingMachine()
         {
-            string fileName = "C:\\Users\\Brandon House\\Pairs\\capstones\\c - module - 1 - capstone - team - 0\\etc\\vendingmachine.csv";
+            //C:\Users\Tia Smith\Pairs\c-module-1-capstone-team-0\Capstone\vendingmachine.csv
+            string fileName = "vendingmachine.csv";
             //Create new dictionary of vending items
             this.VendingMachineItems = new Dictionary<string, VendingMachineItem>();
 
@@ -44,10 +45,7 @@ namespace Capstone.Classes
                     {
                         string item = sr.ReadLine();
                         string[] vendingItem = item.Split('|');
-                        for (int i = 0; i < 4; i++)
-                        {
-                            VendingMachineItems.Add(vendingItem[0], new VendingMachineItem(vendingItem[0], vendingItem[1], decimal.Parse(vendingItem[2]), vendingItem[3]));
-                        }
+                        VendingMachineItems.Add(vendingItem[0], new VendingMachineItem(vendingItem[0], vendingItem[1], decimal.Parse(vendingItem[2]), vendingItem[3]));
                     }
                 }
             }
