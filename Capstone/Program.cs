@@ -15,7 +15,8 @@ namespace Capstone
 
             //Create vending machine stock (Take off truck and cart to the machine)
             //StockVendingMachine vendingMachineStock = new StockVendingMachine();
-
+            Menu main = new Menu();
+            Menu.Run();
 
 
             // Console.WriteLine($"{vendoMatic500.Balance}");
