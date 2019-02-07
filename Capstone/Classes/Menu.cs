@@ -100,19 +100,37 @@ namespace Capstone.Classes
             {
                balance=FeedMoney(balance);
                Console.Clear();
-               PurchaseMenu(balance);
+               PurchaseMenu(balance, vendoMatic500);
             }
             else if (choice == "2")
-            {                
+            {
+                //Display Items for user to see what's there and make a choice
                 vendoMatic500.Display();
+                //Prompt user for item and hold choice in variable
                 string productChoice=GetString(">Please enter the slot of your choice.");
-                
-                //[productChoice]
+                Console.Clear();
+
+                //Check if product code does not exist
+                if(!vendoMatic500.VendingMachineItems.ContainsKey(productChoice))
+                {
+                    Console.WriteLine("That code does not exist. TRY AGAIN.");
+                    PurchaseMenu(balance, vendoMatic500);
+                }
+
+                //Dispense item - if quantity is available and they have enough money and if code exists
+                vendoMatic500.Dispense(productChoice);
+
+                //Update the audit report
+                LogMessage($"{vendoMatic500.VendingMachineItems[productChoice].ProductName} {productChoice}", 
+                    vendoMatic500.Balance + vendoMatic500.VendingMachineItems[productChoice].Price, vendoMatic500.Balance);
+
+                //Return to purchase menu
+                PurchaseMenu(vendoMatic500.Balance, vendoMatic500);
             }
         }
 
         /// <summary>
-        /// Writes to Log.txt
+        /// Writes to Log.txt for audit report.
         /// </summary>
         /// <param name="message"></param>
         /// <param name="adjustment"></param>
@@ -122,7 +140,7 @@ namespace Capstone.Classes
             try
             {
                 using (StreamWriter sw = new StreamWriter("Log.txt"))
-                    sw.WriteLine(DateTime.Now.ToShortTimeString(), -15, (message, -15), (adjustment, -7), (balance));
+                    sw.WriteLine($"{DateTime.Now.ToString()}{message, -20} {adjustment, -10} {balance}");
             }
             catch(Exception ex)
             {

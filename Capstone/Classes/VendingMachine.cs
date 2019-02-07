@@ -19,13 +19,6 @@ namespace Capstone.Classes
 
             //Put the stock into Propery: dictionaryOfVendingMachineItems
             VendingMachineItems = ourStock.SendVendingItems();
-
-            //Write out the stock in the vending machine to make sure we have the items
-            //Iterate through dictionaryOfVendingMachineItems and print ProductName
-            //foreach(KeyValuePair<string, VendingMachineItem> kvp in VendingMachineItems)
-            //{
-            //    Console.WriteLine($"ProductName: {kvp.Value.ProductName}");
-            //}
         }
 
         //Future Methods
@@ -36,6 +29,43 @@ namespace Capstone.Classes
 
 
         }
+
+        /// <summary>
+        /// Dispense item to user.
+        /// </summary>
+        /// <param name="productChoice"></param>
+        public void Dispense(string productChoice)
+        {
+            //Update the quantity of the item in vending machine dictionary.
+            string productType = VendingMachineItems[productChoice].ProductType;
+            if(productType == "Chip")
+            {
+                Console.WriteLine("Crunch Crunch, Yum!");
+            }
+
+            else if (productType == "Drink")
+            {
+                Console.WriteLine("Glug Glug, Yum!");
+            }
+
+            else if (productType == "Candy")
+            {
+                Console.WriteLine("Munch Munch, Yum!");
+            }
+
+            else if (productType == "Gum")
+            {
+                Console.WriteLine("Chew Chew, Yum!");
+            }
+
+            //Update Quantity
+            VendingMachineItems[productChoice].Quantity--;
+
+            //Update Balance of user
+            Balance -= VendingMachineItems[productChoice].Price;
+        }
+
+
 
         /// <summary>
         /// Displays current vending machine state.

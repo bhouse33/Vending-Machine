@@ -14,9 +14,6 @@ namespace Capstone
             Menu main = new Menu();
             main.Run(vendoMatic500);
 
-
-            // Console.WriteLine($"{vendoMatic500.Balance}");
-
         }
     }
 }
