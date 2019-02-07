@@ -5,18 +5,36 @@ using System.Text;
 
 namespace Capstone.Classes
 {
+    /// <summary>
+    /// Represents stocking a vending machine.
+    /// </summary>
     public class StockVendingMachine
     {
-        //=new Dictionary<string, VendingMachineItem>()
-
         /// <summary>
-        /// Dictionary of vending machine items.
+        /// Holds the vending items in a dictionary.
         /// </summary>
         private Dictionary<string, VendingMachineItem> VendingMachineItems;
 
+        /// <summary>
+        /// Initializes the vending machine inventory.
+        /// </summary>
+        /// <param name="fileName"></param>
         public StockVendingMachine(string fileName)
         {
+            //Create new dictionary of vending items
             this.VendingMachineItems = new Dictionary<string, VendingMachineItem>();
+
+            //Create the items
+            PopulateVendingMachineWithInitialItems(fileName);
+  
+        }
+
+        /// <summary>
+        /// Populates vending machine with initial items.
+        /// </summary>
+        /// <param name="fileName"></param>
+        void PopulateVendingMachineWithInitialItems(string fileName)
+        {
             try
             {
                 using (StreamReader sr = new StreamReader(fileName))
@@ -27,9 +45,8 @@ namespace Capstone.Classes
                         string[] vendingItem = item.Split('|');
                         for (int i = 0; i < 4; i++)
                         {
-
-                           // VendingMachineItems.Add
-                            }
+                            VendingMachineItems.Add(vendingItem[0], new VendingMachineItem(vendingItem[0], vendingItem[1], decimal.Parse(vendingItem[2]), vendingItem[3]));
+                        }
                     }
                 }
 
@@ -40,10 +57,8 @@ namespace Capstone.Classes
             {
 
             }
+
         }
-
-
-
 
     }
 }
