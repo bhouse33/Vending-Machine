@@ -13,7 +13,7 @@ namespace Capstone.Classes
         /// <summary>
         /// Holds the vending items in a dictionary.
         /// </summary>
-        public Dictionary<string, VendingMachineItem> VendingMachineItems;
+        private Dictionary<string, VendingMachineItem> VendingMachineItems;
 
         /// <summary>
         /// Initializes the vending machine inventory. 

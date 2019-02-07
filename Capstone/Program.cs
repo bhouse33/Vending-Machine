@@ -10,13 +10,15 @@ namespace Capstone
         {
             Console.WriteLine("Welcome to Vendo-Matic 200!\n");
 
-            //Create vending machine stock (Take off truck and cart to the machine)
-            StockVendingMachine vendingMachineStock = new StockVendingMachine();
-
-            //Create vending machine - take items off cart and load to machine
+            //Create vending machine and stock initial values
             VendingMachine vendoMatic500 = new VendingMachine();
 
-           // Console.WriteLine($"{vendoMatic500.Balance}");
+            //Create vending machine stock (Take off truck and cart to the machine)
+            //StockVendingMachine vendingMachineStock = new StockVendingMachine();
+
+
+
+            // Console.WriteLine($"{vendoMatic500.Balance}");
 
         }
     }
