@@ -6,7 +6,13 @@ namespace Capstone
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            //Object to stock the vending machine.
+            Stock vendingMachineStock = new Stock();
+
+            //Create vending machine
+            VendingMachine vendoMatic500 = new VendingMachine(vendingMachineStock.dictOfItems);
+
+
         }
     }
 }
