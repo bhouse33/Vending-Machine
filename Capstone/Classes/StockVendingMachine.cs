@@ -28,8 +28,7 @@ namespace Capstone.Classes
 
             //Create the items
             PopulateVendingMachineWithInitialItems(fileName);
-
-        }
+        }  
 
         /// <summary>
         /// Populates vending machine with initial items.
