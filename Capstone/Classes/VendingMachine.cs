@@ -22,10 +22,10 @@ namespace Capstone.Classes
 
             //Write out the stock in the vending machine to make sure we have the items
             //Iterate through dictionaryOfVendingMachineItems and print ProductName
-            foreach(KeyValuePair<string, VendingMachineItem> kvp in VendingMachineItems)
-            {
-                Console.WriteLine($"ProductName: {kvp.Value.ProductName}");
-            }
+            //foreach(KeyValuePair<string, VendingMachineItem> kvp in VendingMachineItems)
+            //{
+            //    Console.WriteLine($"ProductName: {kvp.Value.ProductName}");
+            //}
         }
 
         //Future Methods

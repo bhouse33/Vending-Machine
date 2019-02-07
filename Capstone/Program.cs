@@ -8,15 +8,11 @@ namespace Capstone
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Welcome to Vendo-Matic 200!\n");
-
             //Create vending machine and stock initial values
             VendingMachine vendoMatic500 = new VendingMachine();
 
-            //Create vending machine stock (Take off truck and cart to the machine)
-            //StockVendingMachine vendingMachineStock = new StockVendingMachine();
             Menu main = new Menu();
-            Menu.Run();
+            main.Run();
 
 
             // Console.WriteLine($"{vendoMatic500.Balance}");
