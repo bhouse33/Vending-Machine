@@ -42,7 +42,7 @@ namespace Capstone.Classes
                     while (!sr.EndOfStream)
                     {
                         string item = sr.ReadLine();
-                        string[] vendingItem = item.Split('|');
+                        string[] vendingItem = item.Split('|'); 
                         for (int i = 0; i < 4; i++)
                         {
                             VendingMachineItems.Add(vendingItem[0], new VendingMachineItem(vendingItem[0], vendingItem[1], decimal.Parse(vendingItem[2]), vendingItem[3]));
