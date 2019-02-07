@@ -56,14 +56,14 @@ namespace Capstone.Classes
                 else if (choice == "0101")
                 {
                     Console.Clear();
-                    PrintReport();
+                    vendoMatic500.PrintReport();
                 }
 
                 //Display Vending Machine Item
                 else if (choice == "1")
                 {
                     Console.Clear();
-                    Display(vendoMatic500);
+                    vendoMatic500.Display();
                     
                 }
 
@@ -71,7 +71,7 @@ namespace Capstone.Classes
                 else if (choice == "2")
                 {
                     Console.Clear();
-                    PurchaseMenu(vendoMatic500.Balance);
+                    PurchaseMenu(vendoMatic500.Balance, vendoMatic500);
                 }
 
                 else
@@ -83,33 +83,12 @@ namespace Capstone.Classes
             }
         }
 
-        public void Display(VendingMachine vendoMatic500)
-        {
-            Console.Write("Slot_Location", -14);
-            Console.Write(" Name\t\t", -25);
-            Console.Write(" \tPrice\t\t", -17);
-            Console.Write(" Amount_Left", -10);
-            Console.Write(" Type\n");
-            //Console.ReadLine();
-
-            foreach (KeyValuePair<string, VendingMachineItem> kvp in vendoMatic500.VendingMachineItems)
-            {
-                Console.Write($"{kvp.Value.SlotLocation, -14}");
-                Console.Write($"{kvp.Value.ProductName, -25}");
-                Console.Write($"${kvp.Value.Price,-17}");
-                Console.Write($"{kvp.Value.Quantity.ToString(), -10}");
-                Console.Write(kvp.Value.ProductType);
-                Console.WriteLine();
-            }
-        }
-
-        public void PrintReport()
-        {
-
-
-        }
-
-        public void PurchaseMenu(decimal balance)
+      
+        /// <summary>
+        /// Moves to the purchase menu.
+        /// </summary>
+        /// <param name="balance"></param>
+        public void PurchaseMenu(decimal balance, VendingMachine vendoMatic500)
         {
             Console.WriteLine("(1) Feed Money");
             Console.WriteLine("(2) Select Product");
@@ -124,13 +103,12 @@ namespace Capstone.Classes
                PurchaseMenu(balance);
             }
             else if (choice == "2")
-            {
-                //Display();
+            {                
+                vendoMatic500.Display();
+                string productChoice=GetString(">Please enter the slot of your choice.");
+                
+                //[productChoice]
             }
-
-
-
-
         }
 
         /// <summary>
@@ -166,6 +144,7 @@ namespace Capstone.Classes
             LogMessage("FEED MONEY", moneyFed, balance);
             return balance;
         }
+
 
     }
 }

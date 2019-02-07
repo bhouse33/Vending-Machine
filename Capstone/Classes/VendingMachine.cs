@@ -30,6 +30,36 @@ namespace Capstone.Classes
 
         //Future Methods
 
+        //TODO Write this
+        public void PrintReport()
+        {
+
+
+        }
+
+        /// <summary>
+        /// Displays current vending machine state.
+        /// </summary>
+        /// <param name="vendoMatic500">n</param>
+        public void Display()
+        {
+            Console.Write("Slot_Location", -14);
+            Console.Write(" Name\t\t", -25);
+            Console.Write(" \tPrice\t\t", -17);
+            Console.Write(" Amount_Left", -10);
+            Console.Write(" Type\n");
+            //Console.ReadLine();
+
+            foreach (KeyValuePair<string, VendingMachineItem> kvp in VendingMachineItems)
+            {
+                Console.Write($"{kvp.Value.SlotLocation,-14}");
+                Console.Write($"{kvp.Value.ProductName,-25}");
+                Console.Write($"${kvp.Value.Price,-17}");
+                Console.Write($"{kvp.Value.Quantity.ToString(),-10}");
+                Console.Write(kvp.Value.ProductType);
+                Console.WriteLine();
+            }
+        }
 
     }
 }
