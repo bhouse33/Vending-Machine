@@ -64,7 +64,9 @@ namespace Capstone.Classes
                 {
                     Console.Clear();
                     vendoMatic500.Display();
-                    
+                    Console.WriteLine("\nPlease press enter to return to main menu");
+                    Console.ReadLine();
+                    Console.Clear();
                 }
 
                 //Call Purchase Menu
@@ -80,6 +82,7 @@ namespace Capstone.Classes
                     Console.WriteLine("Invalid Option");
                     Console.ReadLine();
                 }
+
             }
         }
 
@@ -96,21 +99,21 @@ namespace Capstone.Classes
             Console.WriteLine($"Current Money Provided: {vendoMatic500.Balance:c2} ");
             string choice = GetString(">Please enter your choice.");
 
-            if (choice =="1")
+            if (choice == "1")
             {
-               vendoMatic500.Balance=FeedMoney(vendoMatic500.Balance);
-               Console.Clear();
-               PurchaseMenu(vendoMatic500);
+                vendoMatic500.Balance = FeedMoney(vendoMatic500.Balance);
+                Console.Clear();
+                PurchaseMenu(vendoMatic500);
             }
             else if (choice == "2")
             {
                 //Display Items for user to see what's there and make a choice
                 vendoMatic500.Display();
                 //Prompt user for item and hold choice in variable
-                string productChoice=GetString(">Please enter the slot of your choice.");                
+                string productChoice = GetString(">Please enter the slot of your choice.");
 
                 //Check if product code does not exist
-                if(!vendoMatic500.VendingMachineItems.ContainsKey(productChoice))
+                if (!vendoMatic500.VendingMachineItems.ContainsKey(productChoice))
                 {
                     Console.WriteLine("That code does not exist. TRY AGAIN.");
                     PurchaseMenu(vendoMatic500);
@@ -120,14 +123,64 @@ namespace Capstone.Classes
                 vendoMatic500.Dispense(productChoice);
 
                 //Update the audit report
-                LogMessage($"{vendoMatic500.VendingMachineItems[productChoice].ProductName} {productChoice} ", 
+                LogMessage($"{vendoMatic500.VendingMachineItems[productChoice].ProductName} {productChoice} ",
                     vendoMatic500.Balance + vendoMatic500.VendingMachineItems[productChoice].Price, vendoMatic500.Balance);
 
                 //Return to purchase menu
                 Console.Clear();
                 PurchaseMenu(vendoMatic500);
             }
+
+            //Finish Transaction
+            else if (choice == "3")
+            {
+                Console.Clear();
+                //Return the customer's money in quarters, dimes, nickels (using smallest amount possible)
+                //Look at the Balance and Call method to calculate return money
+                PrintChange(vendoMatic500);
+
+                //Update machine's balance to $0
+                vendoMatic500.Balance = 0;
+                Console.WriteLine($"Balance: {vendoMatic500.Balance}");
+                Console.ReadLine();
+                Console.Clear();
+
+            }
         }
+
+        /// <summary>
+        /// Prints change in coins.
+        /// </summary>
+        public void PrintChange(VendingMachine vendoMatic500)
+        {
+            double quarters = 0;
+            double dimes = 0;
+            double nickels = 0;
+
+            //12
+            quarters = (double)vendoMatic500.Balance / 0.25;
+            vendoMatic500.Balance -= vendoMatic500.Balance * (decimal)0.25 * (decimal)quarters;
+
+            dimes = (double)vendoMatic500.Balance / 0.10;
+            vendoMatic500.Balance -= vendoMatic500.Balance * (decimal)0.1 * (decimal)dimes;
+
+            nickels = (double)vendoMatic500.Balance / 0.05;
+            vendoMatic500.Balance -= vendoMatic500.Balance * (decimal)0.05 * (decimal)nickels;
+
+            Console.WriteLine("Change returned:" );
+            Console.WriteLine($"Quarters: {quarters}");
+            Console.WriteLine($"Dimes: {dimes}");
+            Console.WriteLine($"Nickels: {nickels}");
+
+            //while (vendoMatic500.Balance > 0.25)
+            //{
+            //    //3.05
+            //}                
+
+
+        }
+
+
 
         /// <summary>
         /// Writes to Log.txt for audit report.

@@ -66,7 +66,6 @@ namespace Capstone.Classes
         }
 
 
-
         /// <summary>
         /// Displays current vending machine state.
         /// </summary>
