@@ -27,7 +27,7 @@ namespace Capstone.Classes
             {
                 foreach (KeyValuePair<string, VendingMachineItem> kvp in VendingMachineItems)
                 {
-                    SalesReportDictionary.Add(kvp.Value.ProductName, 0);
+                    SalesReportDictionary.Add(kvp.Value.SlotLocation, 0);
                 }
             }
             else
@@ -40,7 +40,11 @@ namespace Capstone.Classes
                         {
                             string line = sr.ReadLine();
                             string[] reportLineArray = line.Split('|');
+                            if(reportLineArray[0] != "")
+                            {
+                                                            
                             SalesReportDictionary[reportLineArray[0]] = int.Parse(reportLineArray[1]);
+                            }
                         }
                     }
                 }
@@ -69,9 +73,9 @@ namespace Capstone.Classes
                     foreach (KeyValuePair<string, int> item in SalesReportDictionary)
                     {
                         //Potoato crisps|10
-                        string line = item.Key.ToString() + "|" + item.Value.ToString();
+                        string line = VendingMachineItems[item.Key].ProductName.ToString() + "|" + item.Value.ToString();
                         sr.WriteLine(line);
-                        totalSales += (VendingMachineItems[item.Key].Price) * item.Value;
+                        totalSales += ((VendingMachineItems[item.Key].Price) * item.Value);
                     }
 
                     //print total sales to date
@@ -122,7 +126,7 @@ namespace Capstone.Classes
             Balance -= VendingMachineItems[productChoice].Price;
 
             //Add to report dictionary
-            SalesReportDictionary[VendingMachineItems[productChoice].ProductName]++;
+            SalesReportDictionary[productChoice]++;
         }
 
 
