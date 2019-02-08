@@ -115,31 +115,46 @@ namespace Capstone.Classes
             }
             else if (choice == "2")
             {
-                Console.Clear();
                 //Display Items for user to see what's there and make a choice
                 vendoMatic500.Display();
-                //Prompt user for item and hold choice in variable
-                string productChoice = GetString(">Please enter the slot of your choice.").ToUpper();
-
-                //Check if product code does not exist
-                if (!vendoMatic500.VendingMachineItems.ContainsKey(productChoice))
+                string productChoice = "";
+                while (true)
                 {
-                    Console.WriteLine("That code does not exist. TRY AGAIN.");
-                    PurchaseMenu(vendoMatic500);
-                }
+                    //Prompt user for item and hold choice in variable
+                    productChoice = GetString(">Please enter the slot of your choice.").ToUpper();
 
-                //Check to see if the item selected is sold out
-                if (vendoMatic500.VendingMachineItems[productChoice].Quantity == 0)
-                {
-                    Console.WriteLine("Item is sold out :(");
-                    Console.ReadLine();
-                    Console.Clear();
+                    if (vendoMatic500.VendingMachineItems.ContainsKey(productChoice) &&
+                        vendoMatic500.VendingMachineItems[productChoice].Quantity != 0)
+                    {
+                        break;
+                    }
 
-                    PurchaseMenu(vendoMatic500);
+                    else if (!vendoMatic500.VendingMachineItems.ContainsKey(productChoice))
+                    {
+                        Console.WriteLine("That code does not exist. TRY AGAIN.");
+                        Console.ReadLine();
+                    }
+
+                    //Check to see if the item selected is sold out
+                    else if (vendoMatic500.VendingMachineItems[productChoice].Quantity == 0)
+                    {
+                        Console.WriteLine("Item is sold out :(");
+                        Console.ReadLine();
+                    }
                 }
 
                 //Dispense item - if quantity is available and they have enough money and if code exists
-                vendoMatic500.Dispense(productChoice);
+                if (vendoMatic500.Balance >= vendoMatic500.VendingMachineItems[productChoice].Price)
+                {
+                    vendoMatic500.Dispense(productChoice);
+                }    
+                else
+                {
+                    Console.WriteLine("Insufficient funds. Please feed me money.");
+                    Console.ReadLine();
+                    Console.Clear();
+                    PurchaseMenu(vendoMatic500);
+                }
 
                 //Update the audit report
                 LogMessage($"{vendoMatic500.VendingMachineItems[productChoice].ProductName} {productChoice} ",
