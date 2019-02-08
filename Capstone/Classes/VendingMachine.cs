@@ -22,12 +22,44 @@ namespace Capstone.Classes
             //Put the stock into Propery: dictionaryOfVendingMachineItems
             VendingMachineItems = ourStock.SendVendingItems();
 
+            // Populate SalesReport Dictionary
+            if (!File.Exists("SalesReport.txt"))
+            {
+                foreach (KeyValuePair<string, VendingMachineItem> kvp in VendingMachineItems)
+                {
+                    SalesReportDictionary.Add(kvp.Value.ProductName, 0);
+                }
+            }
+            else
+            {
+                try
+                {
+                    using (StreamReader sr = new StreamReader("SalesReport.txt"))
+                    {
+                        while (!sr.EndOfStream)
+                        {
+                            string line = sr.ReadLine();
+                            string[] reportLineArray = line.Split('|');
+                            SalesReportDictionary[reportLineArray[0]] = int.Parse(reportLineArray[1]);
+                        }
+                    }
+                }
+
+                catch (IOException iox)
+                {
+                    Console.WriteLine("Error writing to the sales report");
+                    Console.WriteLine(iox.Message);
+                }
+
+            }
         }
+
 
         //Called with vendoMatic500.PrintReport();
         //Print the pipe delimited sales report to a file
         public void PrintReport()
         {
+            decimal totalSales = 0;
             //Create an output file
             try
             {
@@ -37,15 +69,20 @@ namespace Capstone.Classes
                     foreach (KeyValuePair<string, int> item in SalesReportDictionary)
                     {
                         //Potoato crisps|10
-                        string line = item.Key.ToString() + item.Value.ToString();
+                        string line = item.Key.ToString() + "|" + item.Value.ToString();
                         sr.WriteLine(line);
+                        totalSales += (VendingMachineItems[item.Key].Price) * item.Value;
                     }
-                    sr.WriteLine("Hi, there");
+
+                    //print total sales to date
+                    sr.WriteLine();
+                    sr.WriteLine($"**TOTAL SALES** {totalSales:C2}");
+
                 }
             }
-            catch(IOException iox)
+            catch (IOException iox)
             {
-                Console.WriteLine("Error writing to the sames report");
+                Console.WriteLine("Error writing to the sales report");
                 Console.WriteLine(iox.Message);
             }
         }
@@ -85,7 +122,7 @@ namespace Capstone.Classes
             Balance -= VendingMachineItems[productChoice].Price;
 
             //Add to report dictionary
-            SalesReportDictionary[VendingMachineItems[productChoice].ProductName]++;              
+            SalesReportDictionary[VendingMachineItems[productChoice].ProductName]++;
         }
 
 
@@ -114,3 +151,4 @@ namespace Capstone.Classes
         }
     }
 }
+

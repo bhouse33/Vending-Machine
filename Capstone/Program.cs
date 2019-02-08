@@ -11,12 +11,6 @@ namespace Capstone
             //Create vending machine and stock initial values
             VendingMachine vendoMatic500 = new VendingMachine();
 
-            //Create Sales report - only do this once
-            //Add logic here to read the file if it exists already
-            //Populate the dictionary
-            SalesReport salesReport = new SalesReport();
-            salesReport.CreateInitialSalesReportFileOnce("vendingmachine.csv", salesReport) ;
-
             //Create main menu
             Menu main = new Menu();
             main.Run(vendoMatic500);
