@@ -19,10 +19,12 @@ namespace Capstone
 }
 
 //TO Do List
-//1 - catch all exceptions for incorrect inputs done?
-//2 - add fancy images for each type of product - for dispense method
-//3 - perhaps color coded in display of items - either by row or type
-//4 - Print Sales Report TIA
+//1 - add logic to send Finish transaction to main menu
+//2 - catch all exceptions for incorrect inputs done?
+//3 - add fancy images for each type of product - for dispense method
+//4 - perhaps color coded in display of items - either by row or type
+//5 - Print Sales Report TIA
+//6 - Line up report agains
 
 
 //UNIT TESTS - BRANDON
