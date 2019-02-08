@@ -225,6 +225,15 @@ namespace Capstone.Classes
 
             foreach (KeyValuePair<string, VendingMachineItem> kvp in VendingMachineItems)
             {
+                //Logic to color-code based on type
+                if (kvp.Value.ProductType == "Chip")
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                if(kvp.Value.ProductType == "Candy")
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                if (kvp.Value.ProductType == "Drink")
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                if (kvp.Value.ProductType == "Gum")
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
                 Console.Write($" {kvp.Value.SlotLocation,-14}");
                 Console.Write($"{kvp.Value.ProductName,-20}");
                 Console.Write($"${kvp.Value.Price,-10}");
@@ -232,6 +241,7 @@ namespace Capstone.Classes
                 Console.Write(kvp.Value.ProductType);
                 Console.WriteLine();
             }
+            Console.ResetColor();
         }
     }
 }

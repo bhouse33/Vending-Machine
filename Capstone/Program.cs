@@ -19,12 +19,11 @@ namespace Capstone
 }
 
 //TO Do List
-//1 - perhaps color coded in display of items - either by row or type
-//2 - Print Sales Report TIA
-//3 - Add existing report logic
-
-//UNIT TESTS
+//1 - Print Sales Report
+//2 - Add logic for existing Sales Report
+//3 - UNIT TESTS
+        //Feed Money
 //test that quantity is reduced when purchased
 //exceptions arent preventing purchases
 //Write tests for methods
-//3 - style cop
+//4 - style cop
