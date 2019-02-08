@@ -185,6 +185,7 @@ namespace Capstone.Classes
                 Console.ReadLine();
                 Console.Clear();
                 PurchaseMenu(vendoMatic500);
+
             }
         }
 
@@ -230,7 +231,7 @@ namespace Capstone.Classes
             try
             {
                 using (StreamWriter sw = new StreamWriter("Log.txt", true))
-                    sw.WriteLine($"{DateTime.Now.ToString()} {message,-20} {adjustment:c2}      {balance:c2}");//${adjustment,-10}
+                    sw.WriteLine($"{DateTime.Now.ToString()} {message,-23} {$"{adjustment:c2}",-8}  {balance:c2}");
             }
             catch (Exception ex)
             {
