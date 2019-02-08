@@ -40,10 +40,10 @@ namespace Capstone.Classes
                         {
                             string line = sr.ReadLine();
                             string[] reportLineArray = line.Split('|');
-                            if(reportLineArray[0] != "")
+
+                            if(line.Equals(""))
                             {
-                                                            
-                            SalesReportDictionary[reportLineArray[0]] = int.Parse(reportLineArray[1]);
+                                break;
                             }
                         }
                     }
