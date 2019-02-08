@@ -190,7 +190,7 @@ namespace Capstone.Classes
             try
             {
                 using (StreamWriter sw = new StreamWriter("Log.txt", true))
-                    sw.WriteLine($"{DateTime.Now.ToString()} {message,-20} ${adjustment,-10} {balance:c2}");
+                    sw.WriteLine($"{DateTime.Now.ToString()} {message,-20} {adjustment:c2}      {balance:c2}");//${adjustment,-10}
             }
             catch(Exception ex)
             {
