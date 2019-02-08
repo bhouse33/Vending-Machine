@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text;
 
 namespace Capstone.Classes
 {
+
     public class Menu
     {
         protected string GetString(string message)
         {
-            string output = String.Empty;
+            string output = string.Empty;
             Console.Write(message + " ");
             output = Console.ReadLine();
             return output;
@@ -17,7 +16,7 @@ namespace Capstone.Classes
 
         protected int GetInteger(string message)
         {
-            string output = String.Empty;
+            string output = string.Empty;
             Console.Write(message + " ");
             output = Console.ReadLine();
             int numberOutput = int.Parse(output);
@@ -26,7 +25,7 @@ namespace Capstone.Classes
 
         protected decimal GetDecimal(string message)
         {
-            string output = String.Empty;
+            string output = string.Empty;
             Console.Write(message + " ");
             output = Console.ReadLine();
             int.Parse(output);
@@ -47,7 +46,7 @@ namespace Capstone.Classes
         /// </summary>
         public void Run(VendingMachine vendoMatic500)
         {
-            string choice = "";
+            string choice = string.Empty;
 
             while (true)
             {
@@ -106,9 +105,11 @@ namespace Capstone.Classes
 
                 else
                 {
+
                     Console.WriteLine("Invalid Option");
                     Console.ReadLine();
-                    Console.Clear(); 
+                    Console.Clear();
+
                 }
             }
         }
@@ -166,7 +167,7 @@ namespace Capstone.Classes
                 if (vendoMatic500.Balance >= vendoMatic500.VendingMachineItems[productChoice].Price)
                 {
                     vendoMatic500.Dispense(productChoice);
-                }    
+                }
                 else
                 {
                     Console.WriteLine("Insufficient funds. Please feed me money.");
@@ -250,7 +251,9 @@ namespace Capstone.Classes
             try
             {
                 using (StreamWriter sw = new StreamWriter("Log.txt", true))
+                {
                     sw.WriteLine($"{DateTime.Now.ToString()} {message,-23} {$"{adjustment:c2}",-8}  {balance:c2}");
+                }
             }
             catch (Exception ex)
             {
