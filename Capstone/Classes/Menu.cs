@@ -64,8 +64,12 @@ namespace Capstone.Classes
                 //Run the sales report
                 else if (choice == "0101")
                 {
-                    Console.Clear();
                     vendoMatic500.PrintReport();
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine("\nSales report generated.");
+                    Console.ResetColor();
+                    Console.ReadLine();
+                    Console.Clear();
                 }
 
                 //Display Vending Machine Item

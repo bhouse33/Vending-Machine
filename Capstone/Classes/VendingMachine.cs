@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 namespace Capstone.Classes
@@ -10,6 +11,7 @@ namespace Capstone.Classes
 
         private Dictionary<string, int> SalesReportDictionary = new Dictionary<string, int>();
 
+        //Should be updated every time an item is dispensed.
         public Dictionary<string, VendingMachineItem> VendingMachineItems = new Dictionary<string, VendingMachineItem>();
 
         public VendingMachine()
@@ -21,13 +23,30 @@ namespace Capstone.Classes
             VendingMachineItems = ourStock.SendVendingItems();
         }
 
-        //Future Methods
-
-        //TODO Write this
+        //Called with vendoMatic500.PrintReport();
+        //Print the pipe delimited sales report to a file
         public void PrintReport()
         {
-
-
+            //Create an output file
+            try
+            {
+                using (StreamWriter sr = new StreamWriter("SalesReport.txt", true))
+                {
+                    //Loop through the SalesReport dictionary and write to SalesReport.txt file
+                    foreach (KeyValuePair<string, int> item in SalesReportDictionary)
+                    {
+                        //Potoato crisps|10
+                        string line = item.Key.ToString() + item.Value.ToString();
+                        sr.WriteLine(line);
+                    }
+                    sr.WriteLine("Hi, there");
+                }
+            }
+            catch(IOException iox)
+            {
+                Console.WriteLine("Error writing to the sames report");
+                Console.WriteLine(iox.Message);
+            }
         }
 
         /// <summary>
@@ -63,6 +82,9 @@ namespace Capstone.Classes
 
             //Update Balance of user
             Balance -= VendingMachineItems[productChoice].Price;
+
+            //Add to report dictionary
+            SalesReportDictionary[]
         }
 
 
