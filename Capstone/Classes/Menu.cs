@@ -47,7 +47,7 @@ namespace Capstone.Classes
                 Console.WriteLine("(Q) Quit");
                 string choice = GetString("> Choose an option: ");
 
-                if (choice == "Q" || choice == "q")
+                if (choice.ToLower() == "q")
                 {
                     break;
                 }
@@ -110,7 +110,7 @@ namespace Capstone.Classes
                 //Display Items for user to see what's there and make a choice
                 vendoMatic500.Display();
                 //Prompt user for item and hold choice in variable
-                string productChoice = GetString(">Please enter the slot of your choice.");
+                string productChoice = GetString(">Please enter the slot of your choice.").ToUpper();
 
                 //Check if product code does not exist
                 if (!vendoMatic500.VendingMachineItems.ContainsKey(productChoice))

@@ -23,16 +23,18 @@ namespace Capstone
 //3** - Code for (3) Finish Transaction - while loop (Brandon) - done
 //4 - add soldout logic
 //5 - Change wording on FeedMoney menu
-//6 - Add to upper and to lower in enter product menu
+//6** - Add to upper and to lower in enter product menu
 //7 - get the log.txt to display feedmoney amounts with the $.00
-//8 - add fancy images for each type of product - for dispense method
-//9 - perhaps color coded in display of items - either by row or type
-//10 - catch all exceptions for incorrect inputs
+//8 - catch all exceptions for incorrect inputs
+
+//9 style cop
+//10 - add fancy images for each type of product - for dispense method
+//11 - perhaps color coded in display of items - either by row or type
 
 
-    //Print Sales Report
-    //Write tests for methods
-    
-    //UNIT TESTS
-    //test that quantity is reduced when purchased
-    //exceptions arent preventing purchases
+//Print Sales Report
+//Write tests for methods
+
+//UNIT TESTS
+//test that quantity is reduced when purchased
+//exceptions arent preventing purchases

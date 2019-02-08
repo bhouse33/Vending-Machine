@@ -9,27 +9,27 @@ namespace Capstone.Classes
         /// <summary>
         /// Represents the slot code.
         /// </summary>
-        public string SlotLocation;
+        public string SlotLocation { get; }
 
         /// <summary>
         /// Represents the name of the product (what's on the packaging).
         /// </summary>
-        public string ProductName;
+        public string ProductName { get; }
 
         /// <summary>
         /// Price of the item.
         /// </summary>
-        public decimal Price;
+        public decimal Price { get; }
 
         /// <summary>
         /// Type of product: candy, gum, beverage, chips
         /// </summary>
-        public string ProductType;
+        public string ProductType { get; }
 
         /// <summary>
         /// Number of items left, starts at 5.
         /// </summary>
-        public int Quantity;
+        public int Quantity { get; set; }
 
         /// <summary>
         /// Create new Vending Machine Item.
