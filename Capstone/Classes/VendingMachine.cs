@@ -29,6 +29,11 @@ namespace Capstone.Classes
                 {
                     SalesReportDictionary.Add(kvp.Value.ProductName, 0);
                 }
+                foreach (KeyValuePair<string, int> item in SalesReportDictionary)
+                {
+                    //Potoato crisps|10
+                    Console.WriteLine("ItemKey: " + item.Key + ":" + item.Value);
+                }
             }
             else
             {
@@ -42,6 +47,11 @@ namespace Capstone.Classes
                             string[] reportLineArray = line.Split('|');
                             SalesReportDictionary[reportLineArray[0]] = int.Parse(reportLineArray[1]);
                         }
+                    }
+                    foreach (KeyValuePair<string, int> item in SalesReportDictionary)
+                    {
+                        //Potoato crisps|10
+                        Console.WriteLine("ItemKey: " + item.Key + ":" + item.Value);
                     }
                 }
 
@@ -71,7 +81,8 @@ namespace Capstone.Classes
                         //Potoato crisps|10
                         string line = item.Key.ToString() + "|" + item.Value.ToString();
                         sr.WriteLine(line);
-                        totalSales += (VendingMachineItems[item.Key].Price) * item.Value;
+                        //totalSales += (VendingMachineItems[item.Key].Price) * item.Value;
+                        totalSales = 0;
                     }
 
                     //print total sales to date
