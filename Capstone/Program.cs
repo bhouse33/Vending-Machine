@@ -19,11 +19,9 @@ namespace Capstone
 }
 
 //TO Do List
-//1 - Print Sales Report
-//2 - Add logic for existing Sales Report
-//3 - UNIT TESTS
+//1 - UNIT TESTS
         //Feed Money
 //test that quantity is reduced when purchased
 //exceptions arent preventing purchases
 //Write tests for methods
-//4 - style cop
+//2 - style cop
