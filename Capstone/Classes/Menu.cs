@@ -3,7 +3,6 @@ using System.IO;
 
 namespace Capstone.Classes
 {
-
     public class Menu
     {
         protected string GetString(string message)
@@ -23,7 +22,7 @@ namespace Capstone.Classes
             return numberOutput;
         }
 
-        protected decimal GetDecimal(string message)
+        public decimal GetDecimal(string message)
         {
             string output = string.Empty;
             Console.Write(message + " ");
@@ -105,11 +104,9 @@ namespace Capstone.Classes
 
                 else
                 {
-
                     Console.WriteLine("Invalid Option");
                     Console.ReadLine();
                     Console.Clear();
-
                 }
             }
         }
