@@ -47,18 +47,18 @@ namespace Capstone.Classes
         /// </summary>
         public void Run(VendingMachine vendoMatic500)
         {
-
+            string choice = "";
             while (true)
             {
                 Console.WriteLine("Welcome to Vendo-Matic 500");
                 Console.WriteLine("(1) Display Vending Machine Item");
                 Console.WriteLine("(2) Purchase");
                 Console.WriteLine("(Q) Quit");
-                string choice = GetString("> Choose an option: ");
+                choice = GetString("> Choose an option: ");
 
                 if (choice.ToLower() == "q")
                 {
-                    break;
+                    return;
                 }
 
                 //Run the sales report
@@ -87,9 +87,9 @@ namespace Capstone.Classes
 
                 else
                 {
-                    Console.Clear();
                     Console.WriteLine("Invalid Option");
                     Console.ReadLine();
+                    Console.Clear(); 
                 }
             }
         }
@@ -178,7 +178,13 @@ namespace Capstone.Classes
                 Console.WriteLine($"Balance: {vendoMatic500.Balance}");
                 Console.ReadLine();
                 Console.Clear();
-
+            }
+            else
+            {
+                Console.WriteLine("Invalid Option");
+                Console.ReadLine();
+                Console.Clear();
+                PurchaseMenu(vendoMatic500);
             }
         }
 
