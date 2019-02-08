@@ -48,13 +48,28 @@ namespace Capstone.Classes
         public void Run(VendingMachine vendoMatic500)
         {
             string choice = "";
+
             while (true)
             {
-                Console.WriteLine("Welcome to Vendo-Matic 500");
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+                Console.WriteLine(@"__     __             _             __  __       _   _        ____   ___   ___  ");
+                Console.WriteLine(@"\ \   / /__ _ __   __| | ___       |  \/  | __ _| |_(_) ___  | ___| / _ \ / _ \ ");
+                Console.WriteLine(@" \ \ / / _ \ '_ \ / _` |/ _ \ _____| |\/| |/ _` | __| |/ __| |___ \| | | | | | |");
+                Console.WriteLine(@"  \ V /  __/ | | | (_| | (_) |_____| |  | | (_| | |_| | (__   ___) | |_| | |_| |");
+                Console.WriteLine(@"   \_/ \___|_| |_|\__,_|\___/      |_|  |_|\__,_|\__|_|\___| |____/ \___/ \___/ ");
+                Console.WriteLine();
+
+                Console.ForegroundColor = ConsoleColor.DarkGreen;
+                Console.WriteLine("Welcome to Vendo-Matic 500\n");
+                Console.ResetColor();
+
+                Console.ForegroundColor = ConsoleColor.Green ^ ConsoleColor.DarkBlue;
+                //Console.ForegroundColor = ConsoleColor.Dared;
                 Console.WriteLine("(1) Display Vending Machine Item");
                 Console.WriteLine("(2) Purchase");
                 Console.WriteLine("(Q) Quit");
                 choice = GetString("> Choose an option: ");
+                Console.ResetColor();
 
                 if (choice.ToLower() == "q")
                 {

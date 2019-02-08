@@ -101,7 +101,28 @@ namespace Capstone.Classes
             string productType = VendingMachineItems[productChoice].ProductType;
             if (productType == "Chip")
             {
+                Console.Clear();
                 Console.WriteLine("Crunch Crunch, Yum!");
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.WriteLine(@"````````       .::::::::-::::///::-       ````````");
+                Console.WriteLine(@"`````          /mmmmmmmmmmmmmmmmmmo          `````");
+                Console.WriteLine(@"```             sdmmmmmmmmmmmmmmds`            ```");
+                Console.WriteLine(@"`               -hddmmmmmmmmmmmdy.               `");
+                Console.WriteLine(@"                 /hhdmmmmmmmmddyo                 ");
+                Console.WriteLine(@"                 +hhdmmmmmmmmdhh/                 ");
+                Console.WriteLine(@"                 :hhd        dhh.                 ");
+                Console.WriteLine(@"                 .yhd  Chips hhh.                 ");
+                Console.WriteLine(@"                 `hhd        dhh:                 ");
+                Console.WriteLine(@"                 `hyhdmmmmmmmdhh/                 ");
+                Console.WriteLine(@"                 .hhydmmmmmmmdhh+                 ");
+                Console.WriteLine(@"                 :hhhdmmmmmmmdhh+                 ");
+                Console.WriteLine(@"                 +yhdmmmmmmmmmhys                 ");
+                Console.WriteLine(@"                +yhdmmmmmmmmmmmdy/                ");
+                Console.WriteLine(@"`              /dmmmmmmmmmmmmmmmmdo              `");
+                Console.WriteLine(@"```            `-......```...-----.            ```");
+                Console.WriteLine(@"`````          ````````````````````          `````");
+                Console.WriteLine(@"`````````       `````````````````         ````````");
+                Console.ResetColor();
             }
 
             else if (productType == "Drink")
@@ -119,14 +140,17 @@ namespace Capstone.Classes
                 Console.WriteLine("Chew Chew, Yum!");
             }
             Console.ReadLine();
+
             //Update Quantity
+
             VendingMachineItems[productChoice].Quantity--;
 
             //Update Balance of user
             Balance -= VendingMachineItems[productChoice].Price;
 
             //Add to report dictionary
-            SalesReportDictionary[productChoice]++;
+            //VendingMachineItems[item.Key].ProductName.ToString()
+            SalesReportDictionary[VendingMachineItems[productChoice].SlotLocation]++;
         }
 
 
@@ -136,7 +160,7 @@ namespace Capstone.Classes
         /// <param name="vendoMatic500">n</param>
         public void Display()
         {
-            Console.Write("Slot_Location", -10);
+            Console.Write("\nSlot_Location", -10);
             Console.Write("\tName", -20);
             Console.Write("\t\t   Price", -6);
             Console.Write("  Amount_Left", -6);
