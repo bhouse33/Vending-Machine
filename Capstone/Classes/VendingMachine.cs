@@ -136,7 +136,7 @@ namespace Capstone.Classes
             {
                 Console.Clear();
                 Console.WriteLine("Glug Glug, Yum!");
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.ForegroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine(@"     `.---:::::-`  `     ");
                 Console.WriteLine(@"   :yhyooooosso+-.-oo/`  ");
                 Console.WriteLine(@"  `oyo/:/+ooyyso++osyy.  ");
@@ -164,7 +164,7 @@ namespace Capstone.Classes
             {
                 Console.Clear();
                 Console.WriteLine("Munch Munch, Yum!");
-                Console.ForegroundColor = ConsoleColor.Red ^ ConsoleColor.Gray;
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine(@"                               ``.-/+os-          ");
                 Console.WriteLine(@"                       ``.-:+osyhhhhhhhh:         ");
                 Console.WriteLine(@"               ``.-:/osyhhhhhhdddddhhhhhh/        ");
@@ -186,7 +186,7 @@ namespace Capstone.Classes
             {
                 Console.Clear();
                 Console.WriteLine("Chew Chew, Yum!");
-                Console.ForegroundColor = ConsoleColor.Red ^ ConsoleColor.Gray;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine(@":::::::::::::::::::::::://////////////+++++++ooo ");
                 Console.WriteLine(@"/////:::::::::::////////////////++++++++ooooooss`");
                 Console.WriteLine(@"/////////////////         ////////++++++++ooooos`");
@@ -232,13 +232,13 @@ namespace Capstone.Classes
             {
                 //Logic to color-code based on type
                 if (kvp.Value.ProductType == "Chip")
-                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 if(kvp.Value.ProductType == "Candy")
                     Console.ForegroundColor = ConsoleColor.DarkYellow;
                 if (kvp.Value.ProductType == "Drink")
-                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
                 if (kvp.Value.ProductType == "Gum")
-                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write($" {kvp.Value.SlotLocation,-14}");
                 Console.Write($"{kvp.Value.ProductName,-20}");
                 Console.Write($"${kvp.Value.Price,-10}");
