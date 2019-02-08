@@ -29,19 +29,17 @@ namespace Capstone.Classes
             string output = String.Empty;
             Console.Write(message + " ");
             output = Console.ReadLine();
-            int outputInt = int.Parse(output);
-            while (outputInt != 1 || outputInt != 2 || outputInt != 5 || outputInt != 10
-                || outputInt != 20 || outputInt != 50 || outputInt != 100)
+            int.Parse(output);
+            if (int.Parse(output) == 1 || int.Parse(output) == 2 || int.Parse(output) == 5
+                || int.Parse(output) == 10 || int.Parse(output) == 20 || int.Parse(output) == 50 || int.Parse(output) == 100)
             {
-                Console.WriteLine("Invalid dollar amount");
-                Console.ReadLine();
-
-
-                return 0m;
-
-            }
                 decimal numberOutput = decimal.Parse(output);
                 return numberOutput;
+            }
+            Console.WriteLine("Invalid dollar amount");
+            Console.ReadLine();
+
+            return 0m;
         }
 
         /// <summary>
@@ -50,7 +48,7 @@ namespace Capstone.Classes
         public void Run(VendingMachine vendoMatic500)
         {
 
-            while(true)
+            while (true)
             {
                 Console.WriteLine("Welcome to Vendo-Matic 500");
                 Console.WriteLine("(1) Display Vending Machine Item");
@@ -96,7 +94,7 @@ namespace Capstone.Classes
             }
         }
 
-      
+
         /// <summary>
         /// Moves to the purchase menu.
         /// </summary>
@@ -127,6 +125,16 @@ namespace Capstone.Classes
                 if (!vendoMatic500.VendingMachineItems.ContainsKey(productChoice))
                 {
                     Console.WriteLine("That code does not exist. TRY AGAIN.");
+                    PurchaseMenu(vendoMatic500);
+                }
+
+                //Check to see if the item selected is sold out
+                if (vendoMatic500.VendingMachineItems[productChoice].Quantity == 0)
+                {
+                    Console.WriteLine("Item is sold out :(");
+                    Console.ReadLine();
+                    Console.Clear();
+
                     PurchaseMenu(vendoMatic500);
                 }
 
@@ -189,7 +197,7 @@ namespace Capstone.Classes
             Console.WriteLine($"Dimes: {dimes}");
             Console.WriteLine($"Nickels: {nickels}");
         }
-               
+
         /// <summary>
         /// Writes to Log.txt for audit report.
         /// </summary>
@@ -203,7 +211,7 @@ namespace Capstone.Classes
                 using (StreamWriter sw = new StreamWriter("Log.txt", true))
                     sw.WriteLine($"{DateTime.Now.ToString()} {message,-20} {adjustment:c2}      {balance:c2}");//${adjustment,-10}
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine("Error cannot write to file");
                 Console.WriteLine(ex.Message);
