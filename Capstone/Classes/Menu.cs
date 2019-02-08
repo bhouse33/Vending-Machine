@@ -29,8 +29,19 @@ namespace Capstone.Classes
             string output = String.Empty;
             Console.Write(message + " ");
             output = Console.ReadLine();
-            decimal numberOutput = decimal.Parse(output);
-            return numberOutput;
+            int outputInt = int.Parse(output);
+            while (outputInt != 1 || outputInt != 2 || outputInt != 5 || outputInt != 10
+                || outputInt != 20 || outputInt != 50 || outputInt != 100)
+            {
+                Console.WriteLine("Invalid dollar amount");
+                Console.ReadLine();
+
+
+                return 0m;
+
+            }
+                decimal numberOutput = decimal.Parse(output);
+                return numberOutput;
         }
 
         /// <summary>
@@ -206,8 +217,9 @@ namespace Capstone.Classes
         /// <returns>new balance</returns>
         public decimal FeedMoney(decimal balance)
         {
+            Console.Clear();
             Console.WriteLine("How much money do you want to feed into the vending machine?");
-            decimal moneyFed = GetDecimal("$1, $2, $5 or $10");
+            decimal moneyFed = GetDecimal("Enter bill amount in whole bills only (eg. $1, $2, $5 or $10): $");
             balance += moneyFed;
             LogMessage("FEED MONEY", moneyFed, balance);
             return balance;
