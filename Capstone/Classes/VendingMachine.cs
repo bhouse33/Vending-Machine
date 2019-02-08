@@ -38,7 +38,7 @@ namespace Capstone.Classes
         {
             //Update the quantity of the item in vending machine dictionary.
             string productType = VendingMachineItems[productChoice].ProductType;
-            if(productType == "Chip")
+            if (productType == "Chip")
             {
                 Console.WriteLine("Crunch Crunch, Yum!");
             }
@@ -72,23 +72,22 @@ namespace Capstone.Classes
         /// <param name="vendoMatic500">n</param>
         public void Display()
         {
-            Console.Write("Slot_Location", -14);
-            Console.Write(" Name\t\t", -25);
-            Console.Write(" \tPrice\t\t", -17);
-            Console.Write(" Amount_Left", -10);
-            Console.Write(" Type\n");
+            Console.Write("Slot_Location", -10);
+            Console.Write("\tName", -20);
+            Console.Write("\t\t   Price", -6);
+            Console.Write("  Amount_Left", -6);
+            Console.Write("\t Type\n");
             //Console.ReadLine();
 
             foreach (KeyValuePair<string, VendingMachineItem> kvp in VendingMachineItems)
             {
-                Console.Write($"{kvp.Value.SlotLocation,-14}");
-                Console.Write($"{kvp.Value.ProductName,-25}");
-                Console.Write($"${kvp.Value.Price,-17}");
-                Console.Write($"{kvp.Value.Quantity.ToString(),-10}");
+                Console.Write($" {kvp.Value.SlotLocation,-14}");
+                Console.Write($"{kvp.Value.ProductName,-20}");
+                Console.Write($"${kvp.Value.Price,-10}");
+                Console.Write($"{kvp.Value.Quantity.ToString(),-11}");
                 Console.Write(kvp.Value.ProductType);
                 Console.WriteLine();
             }
         }
-
     }
 }

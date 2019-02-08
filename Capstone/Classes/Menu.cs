@@ -82,7 +82,6 @@ namespace Capstone.Classes
                     Console.WriteLine("Invalid Option");
                     Console.ReadLine();
                 }
-
             }
         }
 
@@ -107,6 +106,7 @@ namespace Capstone.Classes
             }
             else if (choice == "2")
             {
+                Console.Clear();
                 //Display Items for user to see what's there and make a choice
                 vendoMatic500.Display();
                 //Prompt user for item and hold choice in variable
@@ -153,35 +153,32 @@ namespace Capstone.Classes
         /// </summary>
         public void PrintChange(VendingMachine vendoMatic500)
         {
-            double quarters = 0;
-            double dimes = 0;
-            double nickels = 0;
+            int quarters = 0;
+            int dimes = 0;
+            int nickels = 0;
 
-            //12
-            quarters = (double)vendoMatic500.Balance / 0.25;
-            vendoMatic500.Balance -= vendoMatic500.Balance * (decimal)0.25 * (decimal)quarters;
+            while (vendoMatic500.Balance >= (decimal).25)
+            {
+                vendoMatic500.Balance -= (decimal).25;
+                quarters++;
+            }
+            while (vendoMatic500.Balance >= (decimal).10)
+            {
+                vendoMatic500.Balance -= (decimal).10;
+                dimes++;
+            }
+            while (vendoMatic500.Balance >= (decimal).05)
+            {
+                vendoMatic500.Balance -= (decimal).05;
+                nickels++;
+            }
 
-            dimes = (double)vendoMatic500.Balance / 0.10;
-            vendoMatic500.Balance -= vendoMatic500.Balance * (decimal)0.1 * (decimal)dimes;
-
-            nickels = (double)vendoMatic500.Balance / 0.05;
-            vendoMatic500.Balance -= vendoMatic500.Balance * (decimal)0.05 * (decimal)nickels;
-
-            Console.WriteLine("Change returned:" );
+            Console.WriteLine("Change returned:");
             Console.WriteLine($"Quarters: {quarters}");
             Console.WriteLine($"Dimes: {dimes}");
             Console.WriteLine($"Nickels: {nickels}");
-
-            //while (vendoMatic500.Balance > 0.25)
-            //{
-            //    //3.05
-            //}                
-
-
         }
-
-
-
+               
         /// <summary>
         /// Writes to Log.txt for audit report.
         /// </summary>
@@ -215,7 +212,5 @@ namespace Capstone.Classes
             LogMessage("FEED MONEY", moneyFed, balance);
             return balance;
         }
-
-
     }
 }
