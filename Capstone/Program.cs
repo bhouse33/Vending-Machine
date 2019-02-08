@@ -24,6 +24,7 @@ namespace Capstone
 //3 - add fancy images for each type of product - for dispense method
 //4 - perhaps color coded in display of items - either by row or type
 //5 - Print Sales Report TIA
+//6 - Line up report agains
 
 
 //UNIT TESTS - BRANDON
