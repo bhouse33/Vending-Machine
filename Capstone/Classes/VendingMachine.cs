@@ -9,7 +9,7 @@ namespace Capstone.Classes
     {
         public decimal Balance;
 
-        private Dictionary<string, int> SalesReportDictionary = new Dictionary<string, int>();
+        public Dictionary<string, int> SalesReportDictionary = new Dictionary<string, int>();
 
         //Should be updated every time an item is dispensed.
         public Dictionary<string, VendingMachineItem> VendingMachineItems = new Dictionary<string, VendingMachineItem>();
@@ -127,17 +127,67 @@ namespace Capstone.Classes
 
             else if (productType == "Drink")
             {
+                Console.Clear();
                 Console.WriteLine("Glug Glug, Yum!");
+                Console.ForegroundColor = ConsoleColor.DarkBlue;
+                Console.WriteLine(@"     `.---:::::-`  `     ");
+                Console.WriteLine(@"   :yhyooooosso+-.-oo/`  ");
+                Console.WriteLine(@"  `oyo/:/+ooyyso++osyy.  ");
+                Console.WriteLine(@" -syyys+ooooooo+o+oosss/ ");
+                Console.WriteLine(@" +ssss++++/++++/++/++oys ");
+                Console.WriteLine(@" ossss/++/++so++/++/osys ");
+                Console.WriteLine(@" +ssss+/+-/yoso/+//+oyys ");
+                Console.WriteLine(@" +ysss+//`:+::///:/:+dms ");
+                Console.WriteLine(@" +yssyo///osyo/sssso/mmo ");
+                Console.WriteLine(@" +o/sdhyy          hsdso ");
+                Console.WriteLine(@" +s-sdyys   Soda   ohhhs ");
+                Console.WriteLine(@" +o-dds/s          :o+yo ");
+                Console.WriteLine(@" +ssdd:-syhhy+hyh//+oyhs ");
+                Console.WriteLine(@" +y+/+o-:/oo+/++so++osyo ");
+                Console.WriteLine(@" +yo-:y/+o+//sss++++osy+ ");
+                Console.WriteLine(@" +yooso/+++oooo++++++sy+ ");
+                Console.WriteLine(@" /ysss+++/+ooo++++/+oss/ ");
+                Console.WriteLine(@"  :oss+++++ooo++++++oo:` ");
+                Console.WriteLine(@"    :ososo+oooooooss/`   ");
+                Console.WriteLine(@"      `..-:-:-..``       ");
+                Console.ResetColor();
             }
 
             else if (productType == "Candy")
             {
+                Console.Clear();
                 Console.WriteLine("Munch Munch, Yum!");
+                Console.ForegroundColor = ConsoleColor.Red ^ ConsoleColor.Gray;
+                Console.WriteLine(@"                               ``.-/+os-          ");
+                Console.WriteLine(@"                       ``.-:+osyhhhhhhhh:         ");
+                Console.WriteLine(@"               ``.-:/osyhhhhhhdddddhhhhhh/        ");
+                Console.WriteLine(@"       ```.:/+osyhhhhddddhddddddddhhhhhhhho`      ");
+                Console.WriteLine(@"  `-/+osyhhhddhhhhhdhdddddddddddddddhhhhhhhs.     ");
+                Console.WriteLine(@"  .yhhhhhhhhhddhhhh         ddddddddhhhhhhhhy.    ");
+                Console.WriteLine(@"   :hhhhhhhhhdddddd  Candy  dddddddddddddddhhy:   ");
+                Console.WriteLine(@"    +hhhdhhhhhddddd         dddddddddddddhdhhhy-  ");
+                Console.WriteLine(@"    `yhhhhhhhddddddddddddddddddddddhhdhhhyso/:.`  ");
+                Console.WriteLine(@"     -hhdhdddddddddddddddddddhhhhhyso/:-.`        ");
+                Console.WriteLine(@"      +hdhhhhdhdddddddhhhhhyso+/-.``              ");
+                Console.WriteLine(@"      `shdddddhhhhhhhyso/:.``                     ");
+                Console.WriteLine(@"       .hhhhhhyso+:-```                           ");
+                Console.WriteLine(@"        -o+:-.`                                   ");
+                Console.ResetColor();
             }
 
             else if (productType == "Gum")
             {
+                Console.Clear();
                 Console.WriteLine("Chew Chew, Yum!");
+                Console.ForegroundColor = ConsoleColor.Red ^ ConsoleColor.Gray;
+                Console.WriteLine(@":::::::::::::::::::::::://////////////+++++++ooo ");
+                Console.WriteLine(@"/////:::::::::::////////////////++++++++ooooooss`");
+                Console.WriteLine(@"/////////////////         ////////++++++++ooooos`");
+                Console.WriteLine(@"/+///////////////   Gum   ////////////++++++oooo.");
+                Console.WriteLine(@"++++++///////////         //////////////++++++oo.");
+                Console.WriteLine(@"+++++++++////////////////:::::::://///////+++++o.");
+                Console.WriteLine(@"+++++++/////////:::::::::::::--:-:::::::::::////.");
+                Console.ResetColor();
             }
             Console.ReadLine();
 
@@ -148,9 +198,15 @@ namespace Capstone.Classes
             //Update Balance of user
             Balance -= VendingMachineItems[productChoice].Price;
 
+            foreach (KeyValuePair<string, int> item in SalesReportDictionary)
+            {
+                Console.WriteLine(item.Key + ": " + item.Value);
+            }
+
             //Add to report dictionary
             //VendingMachineItems[item.Key].ProductName.ToString()
-            SalesReportDictionary[VendingMachineItems[productChoice].SlotLocation]++;
+            //SalesReportDictionary[VendingMachineItems[productChoice].SlotLocation]++;
+            //SalesReportDictionary["D1"]++;
         }
 
 
