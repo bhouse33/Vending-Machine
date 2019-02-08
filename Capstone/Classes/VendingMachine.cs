@@ -22,7 +22,7 @@ namespace Capstone.Classes
             //Put the stock into Propery: dictionaryOfVendingMachineItems
             VendingMachineItems = ourStock.SendVendingItems();
 
-            // Populate SalesReport Dictionary
+            // Populate SalesReport Dictionary if the file does not exist
             if (!File.Exists("SalesReport.txt"))
             {
                 foreach (KeyValuePair<string, VendingMachineItem> kvp in VendingMachineItems)
@@ -30,6 +30,7 @@ namespace Capstone.Classes
                     SalesReportDictionary.Add(kvp.Value.SlotLocation, 0);
                 }
             }
+            //If the file already exists, populate the SalesReportDictionary with the file
             else
             {
                 try
@@ -45,6 +46,14 @@ namespace Capstone.Classes
                             {
                                 break;
                             }
+
+                            foreach (KeyValuePair<string, VendingMachineItem> kvp in VendingMachineItems)
+                            {
+                                if(reportLineArray[0] == kvp.Value.ProductName)
+                                {
+                                    SalesReportDictionary.Add(kvp.Value.SlotLocation, int.Parse(reportLineArray[1]));
+                                }
+                            }
                         }
                     }
                 }
@@ -54,10 +63,8 @@ namespace Capstone.Classes
                     Console.WriteLine("Error writing to the sales report");
                     Console.WriteLine(iox.Message);
                 }
-
             }
         }
-
 
         //Called with vendoMatic500.PrintReport();
         //Print the pipe delimited sales report to a file
@@ -67,7 +74,7 @@ namespace Capstone.Classes
             //Create an output file
             try
             {
-                using (StreamWriter sr = new StreamWriter("SalesReport.txt", true))
+                using (StreamWriter sr = new StreamWriter("SalesReport.txt"))
                 {
                     //Loop through the SalesReport dictionary and write to SalesReport.txt file
                     foreach (KeyValuePair<string, int> item in SalesReportDictionary)
@@ -75,7 +82,7 @@ namespace Capstone.Classes
                         //Potoato crisps|10
                         string line = VendingMachineItems[item.Key].ProductName.ToString() + "|" + item.Value.ToString();
                         sr.WriteLine(line);
-                        totalSales += ((VendingMachineItems[item.Key].Price) * item.Value);
+                        totalSales += VendingMachineItems[item.Key].Price * item.Value;
                     }
 
                     //print total sales to date
@@ -204,9 +211,7 @@ namespace Capstone.Classes
             }
 
             //Add to report dictionary
-            //VendingMachineItems[item.Key].ProductName.ToString()
-            //SalesReportDictionary[VendingMachineItems[productChoice].SlotLocation]++;
-            //SalesReportDictionary["D1"]++;
+            SalesReportDictionary[VendingMachineItems[productChoice].SlotLocation]++;
         }
 
 
