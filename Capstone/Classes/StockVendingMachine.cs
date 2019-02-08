@@ -27,8 +27,7 @@ namespace Capstone.Classes
             this.VendingMachineItems = new Dictionary<string, VendingMachineItem>();
 
             //Create the items
-            PopulateVendingMachineWithInitialItems(fileName);
-           
+            PopulateVendingMachineWithInitialItems(fileName);           
         }
 
         public Dictionary<string, VendingMachineItem> SendVendingItems()

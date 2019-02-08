@@ -21,6 +21,7 @@ namespace Capstone.Classes
 
             //Put the stock into Propery: dictionaryOfVendingMachineItems
             VendingMachineItems = ourStock.SendVendingItems();
+
         }
 
         //Called with vendoMatic500.PrintReport();
@@ -84,7 +85,7 @@ namespace Capstone.Classes
             Balance -= VendingMachineItems[productChoice].Price;
 
             //Add to report dictionary
-            SalesReportDictionary[]
+            SalesReportDictionary[VendingMachineItems[productChoice].ProductName]++;              
         }
 
 
