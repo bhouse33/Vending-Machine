@@ -66,8 +66,8 @@ namespace Capstone.Classes
                 Console.WriteLine("(1) Display Vending Machine Item");
                 Console.WriteLine("(2) Purchase");
                 Console.WriteLine("(Q) Quit");
-                choice = GetString("> Choose an option: ");
                 Console.ResetColor();
+                choice = GetString("> Choose an option: ");
 
                 if (choice.ToLower() == "q")
                 {
@@ -118,10 +118,15 @@ namespace Capstone.Classes
         /// <param name="balance"></param>
         public void PurchaseMenu(VendingMachine vendoMatic500)
         {
+            Console.ForegroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("(1) Feed Money");
+            Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.WriteLine("(2) Select Product");
+            Console.ForegroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("(3) Finish Transaction");
+            Console.ForegroundColor = ConsoleColor.DarkGray;
             Console.WriteLine($"Current Money Provided: {vendoMatic500.Balance:c2} ");
+            Console.ResetColor();
             string choice = GetString(">Please enter your choice.");
 
             if (choice == "1")
