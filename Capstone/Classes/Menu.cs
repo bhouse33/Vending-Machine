@@ -83,6 +83,30 @@ namespace Capstone.Classes
                     Console.ResetColor();
                     Console.ReadLine();
                     Console.Clear();
+
+                    //Print report to screen
+                    try
+                    {
+                        using (StreamReader sr = new StreamReader("SalesReport.txt"))
+                        {
+                            while (!sr.EndOfStream)
+                            {
+                                string line = sr.ReadLine();
+                                Console.ForegroundColor = ConsoleColor.Yellow;
+                                Console.WriteLine(line);
+                            }
+                        }
+                        Console.WriteLine();
+                        Console.ForegroundColor = ConsoleColor.Gray;
+                        Console.WriteLine("Press enter to continue:");
+                        Console.ReadLine();
+                        Console.Clear();
+                    }
+                    catch (IOException iox)
+                    {
+                        Console.WriteLine("Error displaying the sales report");
+                        Console.WriteLine(iox.Message);
+                    }
                 }
 
                 //Display Vending Machine Item
