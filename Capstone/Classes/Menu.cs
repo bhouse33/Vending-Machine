@@ -236,7 +236,9 @@ namespace Capstone.Classes
                 nickels++;
             }
 
+            Console.ForegroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("Change returned:");
+            Console.ResetColor();
             Console.WriteLine($"Quarters: {quarters}");
             Console.WriteLine($"Dimes: {dimes}");
             Console.WriteLine($"Nickels: {nickels}");

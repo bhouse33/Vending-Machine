@@ -161,7 +161,8 @@ namespace Capstone.Classes
             }
 
             else if (productType == "Candy")
-            {
+            {   //9 spaces max - "  Candy  "
+                string candyName = VendingMachineItems[productChoice].ProductName;
                 Console.Clear();
                 Console.WriteLine("Munch Munch, Yum!");
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
