@@ -104,7 +104,7 @@ namespace Capstone.Classes
                     }
                     catch (IOException iox)
                     {
-                        Console.WriteLine("Error writing to the sales report");
+                        Console.WriteLine("Error displaying the sales report");
                         Console.WriteLine(iox.Message);
                     }
                 }
