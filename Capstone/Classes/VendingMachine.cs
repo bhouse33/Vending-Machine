@@ -103,14 +103,14 @@ namespace Capstone.Classes
         /// Dispense item to user.
         /// </summary>
         /// <param name="productChoice"></param>
-        public void Dispense(string productChoice)
+        public void Dispense(string productChoice)//Polymorphism
         {
             //Update the quantity of the item in vending machine dictionary.
             string productType = VendingMachineItems[productChoice].ProductType;
             if (productType == "Chip")
             {
                 Console.Clear();
-                Console.WriteLine("Crunch Crunch, Yum!");
+                Console.WriteLine("Crunch Crunch, Yum!");//Polymorphism
                 Console.ForegroundColor = ConsoleColor.DarkMagenta;
                 Console.WriteLine(@"````````       .::::::::-::::///::-       ````````");
                 Console.WriteLine(@"`````          /mmmmmmmmmmmmmmmmmmo          `````");
