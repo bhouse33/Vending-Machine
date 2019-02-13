@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Linq;
 
 namespace Capstone.Classes
 {
@@ -20,7 +21,7 @@ namespace Capstone.Classes
             StockVendingMachine ourStock = new StockVendingMachine();
 
             //Put the stock into Propery: dictionaryOfVendingMachineItems
-            VendingMachineItems = ourStock.SendVendingItems();
+            VendingMachineItems = ourStock.VendingMachineItems;
 
             // Populate SalesReport Dictionary if the file does not exist
             if (!File.Exists("SalesReport.txt"))
@@ -42,14 +43,14 @@ namespace Capstone.Classes
                             string line = sr.ReadLine();
                             string[] reportLineArray = line.Split('|');
 
-                            if(line.Equals(""))
+                            if (line.Equals(""))
                             {
                                 break;
                             }
 
                             foreach (KeyValuePair<string, VendingMachineItem> kvp in VendingMachineItems)
                             {
-                                if(reportLineArray[0] == kvp.Value.ProductName)
+                                if (reportLineArray[0] == kvp.Value.ProductName)
                                 {
                                     SalesReportDictionary.Add(kvp.Value.SlotLocation, int.Parse(reportLineArray[1]));
                                 }
@@ -199,13 +200,14 @@ namespace Capstone.Classes
             }
             Console.ReadLine();
 
+            //Leave in this class - banish above to menu.
             //Update Quantity
-
             VendingMachineItems[productChoice].Quantity--;
 
             //Update Balance of user
             Balance -= VendingMachineItems[productChoice].Price;
 
+            //Create generate sales report method here
             foreach (KeyValuePair<string, int> item in SalesReportDictionary)
             {
                 Console.WriteLine(item.Key + ": " + item.Value);
@@ -215,39 +217,24 @@ namespace Capstone.Classes
             SalesReportDictionary[VendingMachineItems[productChoice].SlotLocation]++;
         }
 
-
-        /// <summary>
-        /// Displays current vending machine state.
-        /// </summary>
-        /// <param name="vendoMatic500">n</param>
-        public void Display()
+        public bool IsItemInStock(string slot)
         {
-            Console.Write("\nSlot_Location", -10);
-            Console.Write("\tName", -20);
-            Console.Write("\t\t   Price", -6);
-            Console.Write("  Amount_Left", -6);
-            Console.Write("\t Type\n");
-            //Console.ReadLine();
+            bool isAvailable = VendingMachineItems[slot].Quantity > 0;
+            return isAvailable;
+        }
 
-            foreach (KeyValuePair<string, VendingMachineItem> kvp in VendingMachineItems)
+        public VendingMachineItem GetItemAtSlot(string slot)
+        {
+            //Sending item assuming it's there
+            return VendingMachineItems[slot];
+        }
+
+        public string[] Slots
+        {
+            get
             {
-                //Logic to color-code based on type
-                if (kvp.Value.ProductType == "Chip")
-                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
-                if(kvp.Value.ProductType == "Candy")
-                    Console.ForegroundColor = ConsoleColor.DarkYellow;
-                if (kvp.Value.ProductType == "Drink")
-                    Console.ForegroundColor = ConsoleColor.DarkCyan;
-                if (kvp.Value.ProductType == "Gum")
-                    Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write($" {kvp.Value.SlotLocation,-14}");
-                Console.Write($"{kvp.Value.ProductName,-20}");
-                Console.Write($"${kvp.Value.Price,-10}");
-                Console.Write($"{kvp.Value.Quantity.ToString(),-11}");
-                Console.Write(kvp.Value.ProductType);
-                Console.WriteLine();
+                return VendingMachineItems.Keys.ToArray();
             }
-            Console.ResetColor();
         }
     }
 }

@@ -1,0 +1,110 @@
+@"__     __             _             __  __       _   _        ____   ___   ___  "
+@"\ \   / /__ _ __   __| | ___       |  \/  | __ _| |_(_) ___  | ___| / _ \ / _ \ "
+@" \ \ / / _ \ '_ \ / _` |/ _ \ _____| |\/| |/ _` | __| |/ __| |___ \| | | | | | |"
+@"  \ V /  __/ | | | (_| | (_) |_____| |  | | (_| | |_| | (__   ___) | |_| | |_| |"
+@"   \_/ \___|_| |_|\__,_|\___/      |_|  |_|\__,_|\__|_|\___| |____/ \___/ \___/ "
+                                                                                
+
+
+
+
+
+Console.WriteLine(@"````````       .::::::::-::::///::-       ````````");
+Console.WriteLine(@"`````          /mmmmmmmmmmmmmmmmmmo          `````");
+Console.WriteLine(@"```             sdmmmmmmmmmmmmmmds`            ```");
+Console.WriteLine(@"`               -hddmmmmmmmmmmmdy.               `");
+Console.WriteLine(@"                 /hhdmmmmmmmmddyo                 ");
+Console.WriteLine(@"                 +hhdmmmmmmmmdhh/                 ");
+Console.WriteLine(@"                 :hhdmmmmmmmmdhh.                 ");
+Console.WriteLine(@"                 .yhd  Chips hhh.                 ");
+Console.WriteLine(@"                 `hhdmmmmmmmmdhh:                 ");
+Console.WriteLine(@"                 `hyhdmmmmmmmdhh/                 ");
+Console.WriteLine(@"                 .hhydmmmmmmmdhh+                 ");
+Console.WriteLine(@"                 :hhhdmmmmmmmdhh+                 ");
+Console.WriteLine(@"                 +yhdmmmmmmmmmhys                 ");
+Console.WriteLine(@"                +yhdmmmmmmmmmmmdy/                ");
+Console.WriteLine(@"`              /dmmmmmmmmmmmmmmmmdo              `");
+Console.WriteLine(@"```            `-......```...-----.            ```");
+Console.WriteLine(@"`````          ````````````````````          `````");
+Console.WriteLine(@"`````````       `````````````````         ````````");
+
+
+
+Console.WriteLine(@"                               ``.-/+os-          ");
+Console.WriteLine(@"                       ``.-:+osyhhhhhhhh:         ");
+Console.WriteLine(@"               ``.-:/osyhhhhhhdddddhhhhhh/        ");
+Console.WriteLine(@"       ```.:/+osyhhhhddddhddddddddhhhhhhhho`      ");
+Console.WriteLine(@"  `-/+osyhhhddhhhhhdhdddddddddddddddhhhhhhhs.     ");
+Console.WriteLine(@"  .yhhhhhhhhhddhhhh         ddddddddhhhhhhhhy.    ");
+Console.WriteLine(@"   :hhhhhhhhhdddddd  Candy  dddddddddddddddhhy:   ");
+Console.WriteLine(@"    +hhhdhhhhhddddd         dddddddddddddhdhhhy-  ");
+Console.WriteLine(@"    `yhhhhhhhddddddddddddddddddddddhhdhhhyso/:.`  ");
+Console.WriteLine(@"     -hhdhdddddddddddddddddddhhhhhyso/:-.`        ");
+Console.WriteLine(@"      +hdhhhhdhdddddddhhhhhyso+/-.``              ");
+Console.WriteLine(@"      `shdddddhhhhhhhyso/:.``                     ");
+Console.WriteLine(@"       .hhhhhhyso+:-```                           ");
+Console.WriteLine(@"        -o+:-.`                                   ");
+ 
+
+
+
+
+
+Console.WriteLine(@":::::::::::::::::::::::://////////////+++++++ooo ");
+Console.WriteLine(@"/////:::::::::::////////////////++++++++ooooooss`");
+Console.WriteLine(@"/////////////////         ////////++++++++ooooos`");
+Console.WriteLine(@"/+///////////////   Gum   ////////////++++++oooo.");
+Console.WriteLine(@"++++++///////////         //////////////++++++oo.");
+Console.WriteLine(@"+++++++++////////////////:::::::://///////+++++o.");
+Console.WriteLine(@"+++++++/////////:::::::::::::--:-:::::::::::////.");
+
+
+
+
+
+Console.WriteLine(@"     `.---:::::-`  `     ");
+Console.WriteLine(@"   :yhyooooosso+-.-oo/`  ");
+Console.WriteLine(@"  `oyo/:/+ooyyso++osyy.  ");
+Console.WriteLine(@" -syyys+ooooooo+o+oosss/ ");
+Console.WriteLine(@" +ssss++++/++++/++/++oys ");
+Console.WriteLine(@" ossss/++/++so++/++/osys ");
+Console.WriteLine(@" +ssss+/+-/yoso/+//+oyys ");
+Console.WriteLine(@" +ysss+//`:+::///:/:+dms ");
+Console.WriteLine(@" +yssyo///osyo/sssso/mmo ");
+Console.WriteLine(@" +o/sdhyy          hsdso ");
+Console.WriteLine(@" +s-sdyys   Soda   sohhhs ");
+Console.WriteLine(@" +o-dds/s          ::o+yo ");
+Console.WriteLine(@" +ssdd:-syhhy+hyh//+oyhs ");
+Console.WriteLine(@" +y+/+o-:/oo+/++so++osyo ");
+Console.WriteLine(@" +yo-:y/+o+//sss++++osy+ ");
+Console.WriteLine(@" +yooso/+++oooo++++++sy+ ");
+Console.WriteLine(@" /ysss+++/+ooo++++/+oss/ ");
+Console.WriteLine(@"  :oss+++++ooo++++++oo:` ");
+Console.WriteLine(@"    :ososo+oooooooss/`   ");
+Console.WriteLine(@"      `..-:-:-..``       ");
+
+
+
+
+
+Make change
+Inventory Population Method
+
+
+co-mingled ui with vending machine itself
+
+whenever writing a class, don't do any console readlines or writeline
+
+
+
+
+
+
+
+
+
+
+
+
+
+

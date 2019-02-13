@@ -26,10 +26,10 @@ namespace Capstone.Classes
         {
             string output = string.Empty;
             Console.Write(message + " ");
-            output = Console.ReadLine();
-            int.Parse(output);
-            if (int.Parse(output) == 1 || int.Parse(output) == 2 || int.Parse(output) == 5
-                || int.Parse(output) == 10 || int.Parse(output) == 20 || int.Parse(output) == 50 || int.Parse(output) == 100)
+            output = Console.ReadLine();//Use try parse instead. To tell if typed valid
+            int parsedVal = int.Parse(output);
+            if (parsedVal == 1 || parsedVal == 2 || parsedVal == 5 || parsedVal == 10 || parsedVal == 20 
+                || parsedVal == 50 || parsedVal == 100)
             {
                 decimal numberOutput = decimal.Parse(output);
                 return numberOutput;
@@ -113,7 +113,9 @@ namespace Capstone.Classes
                 else if (choice == "1")
                 {
                     Console.Clear();
-                    vendoMatic500.Display();
+                    DisplayInventory(vendoMatic500);
+
+                    //vendoMatic500.Display();
                     Console.WriteLine("\nPlease press enter to return to main menu");
                     Console.ReadLine();
                     Console.Clear();
@@ -132,6 +134,37 @@ namespace Capstone.Classes
                     Console.ReadLine();
                     Console.Clear();
                 }
+            }
+        }
+
+        private static void DisplayInventory(VendingMachine vendoMatic500)
+        {
+            Console.Write("\nSlot_Location", -10);
+            Console.Write("\tName", -20);
+            Console.Write("\t\t   Price", -6);
+            Console.Write("  Amount_Left", -6);
+            Console.Write("\t Type\n");
+
+            //Gets all the slots you can work with
+            string[] slots = vendoMatic500.Slots;
+            foreach (string slot in slots)
+            {
+                VendingMachineItem item = vendoMatic500.GetItemAtSlot(slot);
+                //Logic to color-code based on type
+                if (item.ProductType == "Chip")
+                    Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                if (item.ProductType == "Candy")
+                    Console.ForegroundColor = ConsoleColor.DarkYellow;
+                if (item.ProductType == "Drink")
+                    Console.ForegroundColor = ConsoleColor.DarkCyan;
+                if (item.ProductType == "Gum")
+                    Console.ForegroundColor = ConsoleColor.Green;
+                Console.Write($" {item.SlotLocation,-14}");
+                Console.Write($"{item.ProductName,-20}");
+                Console.Write($"${item.Price,-10}");
+                Console.Write($"{item.Quantity.ToString(),-11}");
+                Console.Write(item.ProductType);
+                Console.WriteLine();
             }
         }
 
@@ -162,7 +195,8 @@ namespace Capstone.Classes
             else if (choice == "2")
             {
                 //Display Items for user to see what's there and make a choice
-                vendoMatic500.Display();
+                //vendoMatic500.Display();
+                DisplayInventory(vendoMatic500);
                 string productChoice = "";
                 while (true)
                 {
@@ -170,7 +204,7 @@ namespace Capstone.Classes
                     productChoice = GetString(">Please enter the slot of your choice.").ToUpper();
 
                     if (vendoMatic500.VendingMachineItems.ContainsKey(productChoice) &&
-                        vendoMatic500.VendingMachineItems[productChoice].Quantity != 0)
+                    vendoMatic500.IsItemInStock(productChoice))//Checking if in stock
                     {
                         break;
                     }
